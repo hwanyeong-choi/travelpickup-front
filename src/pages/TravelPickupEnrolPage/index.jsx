@@ -28,8 +28,8 @@ function TravelPickupEnrolPage() {
             },
             onError: (error) => {
                 const responseData = error.response.data;
-                console.log('에러타입: ', responseData.errorType)
-                console.log('에러 메세지: ', responseData.message)
+                console.log('Error type: ', responseData.errorType)
+                console.log('Error message: ', responseData.message)
             }
         })
 
