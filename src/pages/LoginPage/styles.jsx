@@ -1,5 +1,9 @@
 import {styled} from "@stitches/react";
 
+export const TravelPickupContainer = styled('div', {
+    borderRadius: '15px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)'
+})
 
 export const LoginPageContainer = styled('div', {
     display: 'flex',
@@ -8,8 +12,6 @@ export const LoginPageContainer = styled('div', {
     padding: '16px',
     margin: 'auto',
     flexDirection: 'column',
-    borderRadius: '15px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)'
 })
 
 

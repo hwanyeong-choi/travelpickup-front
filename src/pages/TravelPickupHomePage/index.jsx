@@ -4,63 +4,58 @@ import {
     EnrolButton,
     HomePageContainer,
     HomePageTitleDiv, PickupListTitleDiv,
-    PickupStateInfoButton,
+    PickupDiv,
     PickupStateInfoDateDiv,
-    PickupStateInfoDiv
+    TravelPickupContainer, PickupStateInfoDiv
 } from "./styles.jsx";
+import {useNavigate, useNavigation} from "react-router-dom";
+import {CircularProgress, Fade} from "@mui/material";
 
 function TravelPickupHomePage() {
 
-    const { data, isLoading, isError, error} = useQuery('user', async () => {
-        return  await axiosClient.get('/api/v1/me').data;
+    const navigate = useNavigate()
+
+    const { data, isLoading, isError, error} = useQuery('pickupList', async () => {
+        const response = await axiosClient.get('/api/v1/pickups')
+        return response.data;
     }, {
-        cacheTime: 10000
+        cacheTime: 0
     })
-    
-    return (<>
-        <HomePageContainer>
-            <HomePageTitleDiv><h2>Travel Pickup</h2></HomePageTitleDiv>
-            <PickupListTitleDiv><h4>픽업 진행 목록</h4></PickupListTitleDiv>
-            <PickupStateInfoButton>
-                <PickupStateInfoDateDiv>2024. 05. 01</PickupStateInfoDateDiv>
-                <PickupStateInfoDiv>픽업 신청완료</PickupStateInfoDiv>
-            </PickupStateInfoButton>
-            <PickupStateInfoButton>
-                <PickupStateInfoDateDiv>2024. 05. 01</PickupStateInfoDateDiv>
-                <PickupStateInfoDiv>픽업 접수완료</PickupStateInfoDiv>
-            </PickupStateInfoButton>
-            <PickupStateInfoButton>
-                <PickupStateInfoDateDiv>2024. 05. 01</PickupStateInfoDateDiv>
-                <PickupStateInfoDiv>픽업 신청완료</PickupStateInfoDiv>
-            </PickupStateInfoButton>
-            <PickupListTitleDiv><h4>픽업 완료목록</h4></PickupListTitleDiv>
-            <PickupStateInfoButton>
-                <PickupStateInfoDateDiv>2024. 05. 01</PickupStateInfoDateDiv>
-                <PickupStateInfoDiv>픽업 신청완료</PickupStateInfoDiv>
-            </PickupStateInfoButton>
-            <PickupStateInfoButton>
-                <PickupStateInfoDateDiv>2024. 05. 01</PickupStateInfoDateDiv>
-                <PickupStateInfoDiv>픽업 접수완료</PickupStateInfoDiv>
-            </PickupStateInfoButton>
-            <PickupStateInfoButton>
-                <PickupStateInfoDateDiv>2024. 05. 01</PickupStateInfoDateDiv>
-                <PickupStateInfoDiv>픽업 신청완료</PickupStateInfoDiv>
-            </PickupStateInfoButton>
-            <PickupStateInfoButton>
-                <PickupStateInfoDateDiv>2024. 05. 01</PickupStateInfoDateDiv>
-                <PickupStateInfoDiv>픽업 신청완료</PickupStateInfoDiv>
-            </PickupStateInfoButton>
-            <PickupStateInfoButton>
-                <PickupStateInfoDateDiv>2024. 05. 01</PickupStateInfoDateDiv>
-                <PickupStateInfoDiv>픽업 신청완료</PickupStateInfoDiv>
-            </PickupStateInfoButton>
-            <PickupStateInfoButton>
-                <PickupStateInfoDateDiv>2024. 05. 01</PickupStateInfoDateDiv>
-                <PickupStateInfoDiv>픽업 신청완료</PickupStateInfoDiv>
-            </PickupStateInfoButton>
-            <EnrolButton/>
-        </HomePageContainer>
-    </>);
+
+    const handlerPickupDetailButton = (pickupId) => {
+        navigate(`/pickups/${pickupId}`)
+    }
+
+    const getPickupList = (pickupList) => {
+
+        if (pickupList.length !== 0) {
+            return pickupList.map((pickup, index) => (
+            <PickupDiv key={index} onClick={() => {handlerPickupDetailButton(pickup.id)}}>
+                <PickupStateInfoDateDiv>{pickup.createAt}</PickupStateInfoDateDiv>
+                <PickupStateInfoDiv>{pickup.viewState}</PickupStateInfoDiv>
+            </PickupDiv>))
+        }
+
+        return <div style={{fontFamily: 'jalnan', width: '80%', height:'40%', margin: '30px auto', textAlign: 'center'}}>
+            픽업 목록이 존재하지 않습니다.
+        </div>
+    }
+
+    return (<TravelPickupContainer>
+        {
+            isLoading ? <CircularProgress sx={{margin: 'auto', verticalAlign: 'center'}} /> :
+                <Fade in={true} timeout={1500}>
+                    <HomePageContainer>
+                        <HomePageTitleDiv><h2>Travel Pickup</h2></HomePageTitleDiv>
+                        <PickupListTitleDiv><h4>픽업 진행 목록</h4></PickupListTitleDiv>
+                        {getPickupList(data.inProgressPickupList)}
+                        <PickupListTitleDiv><h4>픽업 완료목록</h4></PickupListTitleDiv>
+                        {getPickupList(data.finishPickupList)}
+                    </HomePageContainer>
+                </Fade>
+        }
+        <EnrolButton onClick={() => {navigate('/enrol')}}/>
+    </TravelPickupContainer>);
 
 }
 

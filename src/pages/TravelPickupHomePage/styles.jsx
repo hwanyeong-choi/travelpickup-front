@@ -2,15 +2,23 @@ import {styled} from "@stitches/react";
 import {Box, Fab} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add.js";
 
-export const HomePageContainer = styled('div', {
+export const TravelPickupContainer = styled('div', {
     display: 'flex',
-    width: '414px',
-    maxHeight: '90vh',
-    padding: '16px',
-    margin: 'auto',
-    flexDirection: 'column',
     borderRadius: '15px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+    minHeight: '90vh',
+    maxHeight: '90vh',
+    width: '414px',
+    padding: '16px',
+})
+
+export const HomePageContainer = styled('div', {
+    display: 'flex',
+    margin: 'auto',
+    minHeight: '90vh',
+    maxHeight: '90vh',
+    width: '414px',
+    flexDirection: 'column',
     overflow: 'auto',
     '&::-webkit-scrollbar': {
         display: 'none',
@@ -28,7 +36,7 @@ export const PickupListTitleDiv = styled('div', {
     letterSpacing: '6px',
 })
 
-export const PickupStateInfoButton = styled('div', {
+export const PickupDiv = styled('div', {
     border: '1.5px solid black',
     margin: '16px auto',
     width: '90%',
@@ -37,7 +45,11 @@ export const PickupStateInfoButton = styled('div', {
     display: 'flex',
     backgroundColor: 'white',
     cursor: 'pointer',
-
+    boxShadow: '0 0 px rgba(0, 0, 0, 0.3)',
+    transition: 'background-color 0.3s ease',
+    '&:hover': {
+        backgroundColor: '#f0f0f0',
+    },
 })
 
 export const PickupStateInfoDateDiv = styled('div', {
@@ -52,7 +64,7 @@ export const PickupStateInfoDiv = styled('div', {
     margin: 'auto 16px auto auto'
 })
 
-export const EnrolButton = () => {
+export const EnrolButton = ({onClick}) => {
     return <Box sx={{position: 'sticky',
         bottom: 0,
         right: 0,}}>
@@ -61,7 +73,8 @@ export const EnrolButton = () => {
                  position: 'absolute',
                  bottom: 0,
                  right: 0,
-             }}>
+             }}
+        onClick={onClick}>
             <AddIcon />
         </Fab>
     </Box>

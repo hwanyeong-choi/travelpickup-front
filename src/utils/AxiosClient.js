@@ -16,12 +16,19 @@ class AxiosClient {
         }
     }
 
+    getPostHeaders() {
+        return {
+            'Content-Type': "multipart/form-data",
+            'Authorization': localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : null
+        }
+    }
+
     get(url, config = {}) {
         return this.client.get(url, {...config, headers: this.getHeaders()});
     }
 
     post(url, data, config = {}) {
-        return this.client.post(url, data, {...config, headers: this.getHeaders()});
+        return this.client.post(url, data, {...config, headers: this.getPostHeaders()});
     }
 
     put(url, data, config = {}) {
