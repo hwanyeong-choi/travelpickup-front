@@ -79,15 +79,12 @@ function TravelPickupEnrolPage() {
             formData.append('pickupProductsPhotoFiles', blob, file.name);
         });
 
-        console.log('onSubmit 동작')
-
         enrolPickupMutate(formData)
 
     }
 
     const addProduct = () => {
 
-        console.log('물품 추가');
         setEnrolProductCnt(enrolProductCnt + 1)
 
     }
@@ -102,8 +99,6 @@ function TravelPickupEnrolPage() {
     }
 
     const kakaoMapAddressSearch = (result, status) => {
-        console.log(`상태코드: ${status}`)
-        console.log(`위도: ${result[0].x} 경도: ${result[0].y}`)
         setValue('latitude', result[0].y)
         setValue('longitude', result[0].x)
         setCoordinates({center: {lat: result[0].y, lng: result[0].x}, isPanto: true})
