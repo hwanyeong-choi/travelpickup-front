@@ -4,6 +4,7 @@ import axiosClient from "../../utils/AxiosClient.js";
 import {useMutation} from "react-query";
 import {TravelPickupContainer} from "./styles.jsx";
 import {CircularProgress} from "@mui/material";
+import {TRAVEL_PICKUP_PATHS} from "../../constants/routes.js";
 
 function KakaoLoginProcessingPage() {
 
@@ -19,11 +20,11 @@ function KakaoLoginProcessingPage() {
         }, {
             onSuccess: (data) => {
                 localStorage.setItem('token', data.token);
-                navigate('/home', { replace: true });
+                navigate(TRAVEL_PICKUP_PATHS.PICKUPS_HOME, { replace: true });
             },
             onError: (error) => {
                 alert('로그인 과정에서 오류가 발생하였습니다.');
-                navigate('/login', { replace: true });
+                navigate(TRAVEL_PICKUP_PATHS.LOGIN, { replace: true });
             }
         }
     )

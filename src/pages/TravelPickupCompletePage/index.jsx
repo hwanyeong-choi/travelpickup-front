@@ -2,6 +2,7 @@ import {TravelPickupCompleteContainer, TravelPickupContainer} from "./styles.jsx
 import {Button, Fade} from "@mui/material";
 import VerifiedIcon from '@mui/icons-material/Verified';
 import {useNavigate} from "react-router-dom";
+import {TRAVEL_PICKUP_PATHS} from "../../constants/routes.js";
 
 function TravelPickupCompletePage() {
 
@@ -26,7 +27,7 @@ function TravelPickupCompletePage() {
                             fontFamily: 'jalnan',
                             margin: '30px auto auto auto'
                         }}
-                        onClick={() => navigate('/home')}
+                        onClick={() => navigate(TRAVEL_PICKUP_PATHS.PICKUPS_HOME)}
                         variant="contained"
                         color='success'
                         size="medium">

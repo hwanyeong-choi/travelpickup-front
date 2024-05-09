@@ -6,10 +6,12 @@ import {
     HomePageTitleDiv, PickupListTitleDiv,
     PickupDiv,
     PickupStateInfoDateDiv,
-    TravelPickupContainer, PickupStateInfoDiv
+    TravelPickupContainer,
+    PickupStateInfoDiv
 } from "./styles.jsx";
-import {useNavigate, useNavigation} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {CircularProgress, Fade} from "@mui/material";
+import {TRAVEL_PICKUP_PATHS} from "../../constants/routes.js";
 
 function TravelPickupHomePage() {
 
@@ -23,7 +25,7 @@ function TravelPickupHomePage() {
     })
 
     const handlerPickupDetailButton = (pickupId) => {
-        navigate(`/pickups/${pickupId}`)
+        navigate(`${TRAVEL_PICKUP_PATHS.PICKUPS_PARAMS}${pickupId}`)
     }
 
     const getPickupList = (pickupList) => {
@@ -54,7 +56,7 @@ function TravelPickupHomePage() {
                     </HomePageContainer>
                 </Fade>
         }
-        <EnrolButton onClick={() => {navigate('/enrol')}}/>
+        <EnrolButton onClick={() => {navigate(TRAVEL_PICKUP_PATHS.PICKUPS_ENROL)}}/>
     </TravelPickupContainer>);
 
 }

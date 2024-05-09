@@ -14,24 +14,11 @@ import kakaoGeocoder from "../../utils/KakaoGeocoder.js";
 import {useMutation} from "react-query";
 import axiosClient from "../../utils/AxiosClient.js";
 import {useNavigate} from "react-router-dom";
+import {TRAVEL_PICKUP_PATHS} from "../../constants/routes.js";
 
 function TravelPickupEnrolPage() {
 
-    const { mutate: enrolPickupMutate, isLoding, isError, error, data} = useMutation(
-        async (data) => {
-            await axiosClient.post('/api/v1/pickups', data)
-        },
-        {
-            onSuccess: (data) => {
-                navigate('/pickups/complete')
 
-            },
-            onError: (error) => {
-                const responseData = error.response.data;
-                console.log('Error type: ', responseData.errorType)
-                console.log('Error message: ', responseData.message)
-            }
-        })
 
     const navigate = useNavigate();
 
@@ -52,6 +39,22 @@ function TravelPickupEnrolPage() {
         handleSubmit,
         formState: {errors}
     } = useForm();
+
+    const { mutate: enrolPickupMutate, isLoding, isError, error, data} = useMutation(
+        async (data) => {
+            await axiosClient.post('/api/v1/pickups', data)
+        },
+        {
+            onSuccess: (data) => {
+                navigate(TRAVEL_PICKUP_PATHS.PICKUPS_COMPLETE)
+
+            },
+            onError: (error) => {
+                const responseData = error.response.data;
+                console.log('Error type: ', responseData.errorType)
+                console.log('Error message: ', responseData.message)
+            }
+        })
 
     const onSubmit = (data) => {
 

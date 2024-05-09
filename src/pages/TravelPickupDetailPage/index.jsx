@@ -12,6 +12,7 @@ import {
 import {useMutation, useQuery} from "react-query";
 import axiosClient from "../../utils/AxiosClient.js";
 import TravelPickupModal from "../../components/TravelPickupModal/index.jsx";
+import {TRAVEL_PICKUP_PATHS} from "../../constants/routes.js";
 
 
 function TravelPickupDetailPage() {
@@ -37,7 +38,7 @@ function TravelPickupDetailPage() {
             console.log('Error type:', responseData.errorType);
             console.log('Error message:', responseData.message);
             alert('잘못된 픽업 id 입니다.')
-            navigate('/home')
+            navigate(TRAVEL_PICKUP_PATHS.PICKUPS_HOME)
         },
     })
 
@@ -46,7 +47,7 @@ function TravelPickupDetailPage() {
             await axiosClient.delete(`/api/v1/pickups/${pickupId}`)
         }, {
             onSuccess: (cancelData) => {
-                navigate('/home')
+                navigate(TRAVEL_PICKUP_PATHS.PICKUPS_HOME)
             },
             onError: (cancellError) => {
                 const responseData = error.response.data;

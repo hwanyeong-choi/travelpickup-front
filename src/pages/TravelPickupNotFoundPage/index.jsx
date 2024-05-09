@@ -2,6 +2,7 @@ import {TravelPickupContainer, TravelPickupNotFoundContainer} from "./styles.jsx
 import {Button, Fade} from "@mui/material";
 import DangerousIcon from '@mui/icons-material/Dangerous';
 import {useNavigate} from "react-router-dom";
+import {TRAVEL_PICKUP_PATHS} from "../../constants/routes.js";
 
 function TravelPickupNotFoundPage() {
 
@@ -29,7 +30,7 @@ function TravelPickupNotFoundPage() {
                             fontFamily: 'jalnan',
                             margin: '30px auto auto auto'
                         }}
-                        onClick={() => navigate('/home')}
+                        onClick={() => navigate(TRAVEL_PICKUP_PATHS.PICKUPS_HOME)}
                         variant="contained"
                         size="medium">
                         홈으로 이동하기
