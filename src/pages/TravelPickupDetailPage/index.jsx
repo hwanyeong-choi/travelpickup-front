@@ -11,7 +11,7 @@ import {
 } from "./styles.jsx";
 import {useMutation, useQuery} from "react-query";
 import axiosClient from "../../utils/AxiosClient.js";
-import TravelPickupModal from "../../components/TravelPickupModal/index.jsx";
+import TravelPickupModalTwoButton from "../../components/TravelPickupModalTwoButton/index.jsx";
 import {TRAVEL_PICKUP_PATHS} from "../../constants/routes.js";
 
 
@@ -219,7 +219,7 @@ function TravelPickupDetailPage() {
                                     }}>
                                         {getButtonList()}
                                     </div>
-                                    <TravelPickupModal
+                                    <TravelPickupModalTwoButton
                                         showModal={showCancelModal}
                                         setShowModal={setShowCancelModal}
                                         modalTitle={'취소'}

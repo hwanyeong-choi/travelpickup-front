@@ -1,7 +1,7 @@
 import {Box, Button, Modal} from "@mui/material";
 
 
-function TravelPickupModal({ showModal,
+function TravelPickupModalTwoButton({ showModal,
                                setShowModal,
                                modalTitle,
                                message,
@@ -66,4 +66,4 @@ function TravelPickupModal({ showModal,
 
 }
 
-export default TravelPickupModal;
+export default TravelPickupModalTwoButton;

@@ -9,7 +9,7 @@ import {TRAVEL_PICKUP_ROUTES} from "./constants/routes.js";
 
 const LoginPage = React.lazy(() => import("./pages/LoginPage/index.jsx"));
 const KakaoLoginProcessingPage = React.lazy(() => import("./pages/KakaoLoginProcessingPage/index.jsx"));
-const LoginProtected = React.lazy(() => import("./components/LoginProtected/index.jsx"));
+const AuthProtected = React.lazy(() => import("./components/AuthProtected/index.jsx"));
 const TravelPickupHomePage = React.lazy(() => import("./pages/TravelPickupHomePage/index.jsx"));
 const TravelPickupEnrolPage = React.lazy(() => import("./pages/TravelPickupEnrolPage/index.jsx"));
 const TravelPickupDetailPage = React.lazy(() => import("./pages/TravelPickupDetailPage/index.jsx"));
@@ -34,7 +34,7 @@ function App() {
                     </Route>
 
                     {/*로그인 했을때만 접근가능한 라우터*/}
-                    <Route path={TRAVEL_PICKUP_ROUTES.PICKUPS.ROOT} element={<LoginProtected/>}>
+                    <Route path={TRAVEL_PICKUP_ROUTES.PICKUPS.ROOT} element={<AuthProtected/>}>
                         <Route path={TRAVEL_PICKUP_ROUTES.PICKUPS.HOME} element={<TravelPickupHomePage/>}/>
                         <Route path={TRAVEL_PICKUP_ROUTES.PICKUPS.ENROL} element={<TravelPickupEnrolPage/>}/>
                         <Route path={TRAVEL_PICKUP_ROUTES.PICKUPS.PARAMS.PICKUP_ID} element={<TravelPickupDetailPage/>}/>
