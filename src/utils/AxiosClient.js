@@ -1,9 +1,11 @@
 import axios from "axios";
+import {TRAVEL_PICKUP_LOCAL_STORAGE} from "../constants/localstorage.js";
+import {TRAVEL_PICKUP_PATHS} from "../constants/routes.js";
 class AxiosClient {
 
     constructor() {
         this.client = axios.create({
-            baseURL: 'http://localhost:8080'})
+            baseURL: import.meta.env.VITE_API_URL})
 
         this.client.interceptors.response.use(
             response => {
@@ -11,7 +13,7 @@ class AxiosClient {
             },
             error => {
                 if (error.response && error.response.status === 401) {
-                    window.location.replace('/login');
+                    window.location.replace(TRAVEL_PICKUP_PATHS.LOGIN);
                 }
                 return Promise.reject(error);
             }
@@ -22,14 +24,14 @@ class AxiosClient {
     getHeaders() {
         return {
             'Content-Type': "application/json",
-            'Authorization': localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : null
+            'Authorization': localStorage.getItem(TRAVEL_PICKUP_LOCAL_STORAGE.TOKEN) ? `Bearer ${localStorage.getItem(TRAVEL_PICKUP_LOCAL_STORAGE.TOKEN)}` : null
         }
     }
 
     getPostHeaders() {
         return {
             'Content-Type': "multipart/form-data",
-            'Authorization': localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : null
+            'Authorization': localStorage.getItem(TRAVEL_PICKUP_LOCAL_STORAGE.TOKEN) ? `Bearer ${localStorage.getItem(TRAVEL_PICKUP_LOCAL_STORAGE.TOKEN)}` : null
         }
     }
 
@@ -48,7 +50,7 @@ class AxiosClient {
     delete(url, config = {}) {
         return this.client.delete(url, {...config, headers: this.getHeaders()});
     }
-    
+
 }
 
 
