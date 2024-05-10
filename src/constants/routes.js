@@ -3,7 +3,7 @@ export const TRAVEL_PICKUP_ROUTES = {
     ROOT: '/',
     LOGIN: '/login',
     AUTH: {
-        ROOT: 'auth',
+        ROOT: '/auth',
         PARAMS: {
             PROVIDER: ':provider'
         }
