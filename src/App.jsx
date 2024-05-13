@@ -14,7 +14,8 @@ const TravelPickupHomePage = React.lazy(() => import("./pages/TravelPickupHomePa
 const TravelPickupEnrolPage = React.lazy(() => import("./pages/TravelPickupEnrolPage/index.jsx"));
 const TravelPickupDetailPage = React.lazy(() => import("./pages/TravelPickupDetailPage/index.jsx"));
 const TravelPickupCompletePage = React.lazy(() => import('./pages/TravelPickupCompletePage/index.jsx'));
-const TravelPickupNotFoundPage = React.lazy(()=> import('./pages/TravelPickupNotFoundPage/index.jsx'))
+const TravelPickupNotFoundPage = React.lazy(()=> import('./pages/TravelPickupNotFoundPage/index.jsx'));
+const TravelPickupCenterPage = React.lazy(() => import('./pages/TravelPickupCenterPage/index.jsx'));
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
                         <Route path={TRAVEL_PICKUP_ROUTES.PICKUPS.ENROL} element={<TravelPickupEnrolPage/>}/>
                         <Route path={TRAVEL_PICKUP_ROUTES.PICKUPS.PARAMS.PICKUP_ID} element={<TravelPickupDetailPage/>}/>
                         <Route path={TRAVEL_PICKUP_ROUTES.PICKUPS.COMPLETE} element={<TravelPickupCompletePage/>}/>
+                        <Route path={TRAVEL_PICKUP_ROUTES.PICKUPS.CENTER} element={<TravelPickupCenterPage/>}/>
                     </Route>
 
                     {/*404 Not Found Page*/}
