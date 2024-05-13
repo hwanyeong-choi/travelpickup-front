@@ -15,6 +15,11 @@ class AxiosClient {
                 if (error.response && error.response.status === 401) {
                     window.location.replace(TRAVEL_PICKUP_PATHS.LOGIN);
                 }
+
+                if (error.response && error.response.status === 403) {
+                    window.location.replace(TRAVEL_PICKUP_PATHS.LOGIN);
+                }
+
                 return Promise.reject(error);
             }
         );

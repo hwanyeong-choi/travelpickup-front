@@ -13,6 +13,7 @@ import {useMutation, useQuery} from "react-query";
 import axiosClient from "../../utils/AxiosClient.js";
 import TravelPickupModalTwoButton from "../../components/TravelPickupModalTwoButton/index.jsx";
 import {TRAVEL_PICKUP_PATHS} from "../../constants/routes.js";
+import QRCode from "qrcode.react";
 
 
 function TravelPickupDetailPage() {
@@ -67,78 +68,71 @@ function TravelPickupDetailPage() {
     }
 
     const getProductList = (productList) => {
-        return productList.map((product, index) => (
+        return productList.map((product, index) =>
                 <div key={index}
-                     style={{
-                        paddingTop: '30px',
-                        borderTop: '2px solid whitesmoke',
+                        style={{
+                        border: '2px solid whitesmoke',
+                        borderRadius: '5px',
+                        padding: '10px',
+                        fontSize: '14px',
+                        fontFamily: 'jalnan',
                         display: 'flex',
-                        flexDirection: "column"}}>
-                    <label>
-                        <img
-                            src={`data:image/*;base64,${product.productImgByBase64}`}
-                            alt={`Product Img ${index}`}
-                            style={{
-                                borderRadius: '16px',
-                                boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
-                                width: '100%',
-                                height: '350px',
-                                marginBottom: '16px'
-                            }}
-                        />
-                    </label>
-                    <div style={{display: 'flex', marginBottom: '16px'}}>
-                        <TextField
-                            sx={{width: '75%'}}
-                            required
-                            id="outlined-required"
-                            label='물품명'
-                            defaultValue={product.name}
-                            InputProps={{readOnly: true}}
-                        />
-                        <TextField
-                            sx={{width: '20%', marginLeft: 'auto'}}
-                            id="outlined-number"
-                            label="개수"
-                            type="number"
-                            defaultValue={product.quantity}
-                            InputProps={{readOnly: true}}/>
+                        flexDirection: 'row',
+                        width: '100%'
+                }}>
+                    <div style={{ margin: 'auto auto auto 0px'}}>
+                        <div>{`물품명: ${product.name}`}</div>
+                        <div>{`개수: ${product.quantity}`}</div>
                     </div>
+                    <img
+                        src={`data:image/*;base64,${product.productImgByBase64}`}
+                        alt={`Product Img ${index}`}
+                        style={{
+                            borderRadius: '5px',
+                            boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+                            width: '80px',
+                            height: '80px',
+                            margin: 'auto 0px auto auto'
+                        }}
+                    />
                 </div>
-            )
         )
     }
 
     const getButtonList = () => {
         if (data.pickup.state === ableCancelState) {
             return (<>
-                <Button
-                    sx={{
-                        width: '48%',
-                        fontFamily: 'jalnan'
-                    }}
-                    variant="contained"
-                    size="large"
-                    color='error'
-                    onClick={() => setShowCancelModal(true)}>
-                    신청취소
+            <Button
+                sx={{
+                    width: '48%',
+                    fontFamily: 'jalnan'
+                }}
+                variant="contained"
+                size="large"
+                color='error'
+                onClick={() => setShowCancelModal(true)}>
+                신청취소
+            </Button>
+            <Button
+                sx={{
+                    width: '48%',
+                    fontFamily: 'jalnan'
+                }}
+                type='submit'
+                variant="contained"
+                size="large"
+                onClick={() => navigate(-1)}>
+            목록으로
                 </Button>
-                <Button
-                    sx={{width: '48%',
-                        fontFamily: 'jalnan'}}
-                    type='submit'
-                    variant="contained"
-                    size="large"
-                    onClick={() => navigate(-1)}>
-                    목록으로
-                </Button>
-                </>);
+            </>);
         }
 
         return (
             <Button
-                sx={{width: '100%',
-                    fontFamily: 'jalnan'}}
+                sx={{
+                    width: '100%',
+                    fontFamily: 'jalnan'
+                }}
                 type='submit'
                 variant="contained"
                 size="large"
@@ -158,6 +152,21 @@ function TravelPickupDetailPage() {
                             <EnrolInfoTitleDiv><h3>픽업 신청내역</h3></EnrolInfoTitleDiv>
                             <Fade in={true} timeout={2000}>
                                 <div style={{display: 'flex', flexDirection: "column"}}>
+                                    <div style={{
+                                        display: 'flex',
+                                        border: '1px solid #dcdcdc',
+                                        borderRadius: '5px',
+                                        marginBottom: '10px',
+                                        padding: '10px'
+                                    }}>
+                                    <div style={{
+                                        fontFamily: 'jalnan',
+                                        margin: 'auto'}}>
+                                            픽업센터 접수 QR 코드
+                                        </div>
+                                        <QRCode  style={{margin: 'auto 0px auto auto'}}
+                                                 value={JSON.stringify(data.pickup)}/>
+                                    </div>
                                     <Map
                                         id="map"
                                         center={{
@@ -210,14 +219,20 @@ function TravelPickupDetailPage() {
                                     <EnrolInfoTitleDiv>
                                         <h4>물품 목록</h4>
                                     </EnrolInfoTitleDiv>
-                                    {getProductList(data.productList)}
+                                    <div style={{display: 'flex',
+                                        flexDirection:'column',
+                                        justifyContent: 'space-between',
+                                        gap: '10px'
+                                    }}>
+                                        {getProductList(data.productList)}
+                                    </div>
                                     <div style={{
                                         paddingTop: '30px',
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         width: '100%'
                                     }}>
-                                        {getButtonList()}
+                                    {getButtonList()}
                                     </div>
                                     <TravelPickupModalTwoButton
                                         showModal={showCancelModal}
