@@ -56,7 +56,9 @@ function TravelPickupHomePage() {
                     </HomePageContainer>
                 </Fade>
         }
-        <EnrolButton onClick={() => {navigate(TRAVEL_PICKUP_PATHS.PICKUPS_ENROL)}}/>
+        <EnrolButton
+            pickupCenterHandler={() => {navigate(TRAVEL_PICKUP_PATHS.PICKUPS_CENTER)}}
+            pickupEnrolHandler={() => {navigate(TRAVEL_PICKUP_PATHS.PICKUPS_ENROL)}}/>
     </TravelPickupContainer>);
 
 }
