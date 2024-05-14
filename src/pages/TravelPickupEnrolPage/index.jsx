@@ -211,6 +211,10 @@ function TravelPickupEnrolPage() {
             )})
     }
 
+    const cancelButtonHandler = () => {
+        navigate(TRAVEL_PICKUP_PATHS.PICKUPS_HOME)
+    }
+
     return (
         <TravelPickupContainer>
             <Fade in={true} timeout={1500}>
@@ -272,10 +276,11 @@ function TravelPickupEnrolPage() {
                                         width: '48%',
                                         fontFamily: 'jalnan'
                                     }}
+                                    onClick={cancelButtonHandler}
                                     variant="contained"
                                     size="large"
                                     color='error'>
-                                    신청 취소
+                                    취소
                                 </Button>
                                 <Button
                                     sx={{

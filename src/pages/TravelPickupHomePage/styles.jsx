@@ -1,6 +1,7 @@
 import {styled} from "@stitches/react";
 import {Box, Fab} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add.js";
+import NavigationIcon from '@mui/icons-material/Navigation';
 
 export const TravelPickupContainer = styled('div', {
     display: 'flex',
@@ -64,18 +65,37 @@ export const PickupStateInfoDiv = styled('div', {
     margin: 'auto 16px auto auto'
 })
 
-export const EnrolButton = ({onClick}) => {
-    return <Box sx={{position: 'sticky',
-        bottom: 0,
-        right: 0,}}>
-        <Fab color="primary" aria-label="add"
-             sx={{
-                 position: 'absolute',
-                 bottom: 0,
-                 right: 0,
-             }}
-        onClick={onClick}>
-            <AddIcon />
-        </Fab>
-    </Box>
+export const EnrolButton = ({pickupCenterHandler, pickupEnrolHandler}) => {
+    return <>
+        <Box sx={{position: 'sticky',
+            bottom: 0,
+            right: 0,
+        }}>
+            <Fab variant='extended'
+                 color="primary"
+                 sx={{position: 'absolute',
+                     bottom: 70,
+                     right: 0,
+                     display: 'flex',
+                     minWidth: '150px'
+                 }}
+                 onClick={pickupCenterHandler}>
+                <NavigationIcon sx={{ margin: 'auto 16px auto 0' }}/>
+                <div style={{fontFamily: 'jalnan'}}>픽업센터</div>
+            </Fab>
+            <Fab variant='extended'
+                 color="primary"
+                 sx={{
+                     position: 'absolute',
+                     bottom: 0,
+                     right: 0,
+                     display: 'flex',
+                     minWidth: '150px'
+                 }}
+                 onClick={pickupEnrolHandler}>
+                <AddIcon sx={{margin: 'auto 16px auto 0'}}/>
+                <div style={{fontFamily: 'jalnan'}}>픽업신청</div>
+            </Fab>
+        </Box>
+    </>
 }

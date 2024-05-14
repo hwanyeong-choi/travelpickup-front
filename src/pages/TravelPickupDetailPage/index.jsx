@@ -164,7 +164,10 @@ function TravelPickupDetailPage() {
                                         margin: 'auto'}}>
                                             픽업센터 접수 QR 코드
                                         </div>
-                                        <QRCode  style={{margin: 'auto 0px auto auto'}}
+                                        <QRCode  style={{
+                                            margin: 'auto 0px auto auto',
+                                            width: '75px',
+                                            height: '75px'}}
                                                  value={JSON.stringify(data.pickup)}/>
                                     </div>
                                     <Map
