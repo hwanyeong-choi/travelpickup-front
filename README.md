@@ -11,7 +11,7 @@ Backend Github Repository: [travelpickup-api](https://github.com/hwanyeong-choi/
 ## Tech Stack
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/3016db63-845f-44ca-b702-e1a487f5ec11" alt="react" width="58" height="58">
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/4191dbc1-8b5b-46c9-bd84-36d937da269e" alt="vite" width="58" height="58">
-<img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/3016db63-845f-44ca-b702-e1a487f5ec11" alt="reqct-query" width="58" height="58">
+<img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/57c5e0a4-a5cc-4a66-a42a-3549133529a2" alt="reqct-query" width="58" height="58">
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/4b133046-caf4-4e5c-ad82-dfa5f1d36298" alt="react-route" width="58" height="58">
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/4b6206c5-2e8a-432b-96db-b96a8988c717" alt="react-hook-form" width="58" height="58">
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/3f27b9f5-0041-46ff-953f-e485edceda6c" alt="stitches" width="58" height="58">
