@@ -14,10 +14,10 @@ Backend Github Repository: [travelpickup-api](https://github.com/hwanyeong-choi/
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/57c5e0a4-a5cc-4a66-a42a-3549133529a2" alt="reqct-query" width="58" height="58">
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/4b133046-caf4-4e5c-ad82-dfa5f1d36298" alt="react-route" width="58" height="58">
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/4b6206c5-2e8a-432b-96db-b96a8988c717" alt="react-hook-form" width="58" height="58">
-<img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/3f27b9f5-0041-46ff-953f-e485edceda6c" alt="stitches" width="58" height="58">
-<img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/3a5fe0c7-9ac8-402f-8cfd-965f54e8e56d" alt="mui" width="58" height="58">
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/cd8da9f6-24ee-41a4-b16a-101ce020cb63" alt="axios" width="58" height="58">
+<img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/3f27b9f5-0041-46ff-953f-e485edceda6c" alt="stitches" width="58" height="58">
 <img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/9f327c27-6193-4e40-b781-e84c9b3b3712" alt="kakao-map" width="58" height="58">
+<img src="https://github.com/hwanyeong-choi/travelpickup-front/assets/47169718/3a5fe0c7-9ac8-402f-8cfd-965f54e8e56d" alt="mui" width="58" height="58">
 
 ## VCS: Version Control System
 <img src="https://github.com/hwanyeong-choi/travelpickup-api/assets/47169718/3163513f-78b6-4906-83ac-ac143cebd0a8" alt="github" width="58" height="58">
